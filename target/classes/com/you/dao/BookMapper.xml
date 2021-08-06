@@ -10,20 +10,24 @@
     </insert>
 
     <delete id="deleteBookById" parameterType="int">
-        delete  from ssmbuild.books where bookID = #{bookId};
+        delete  from ssmbuild.books where bookId = #{bookId};
     </delete>
 
     <update id="updateBook" parameterType="books">
         update ssmbuild.books
-        set bookName = #{bookName},bookCounts = #{bookCounts},detail = #{detail};
-        where bookID=#{bookID};
+        set bookName = #{bookName},bookCounts = #{bookCounts},detail = #{detail}
+        where bookId=#{bookId};
     </update>
 
-    <select id="queryBookById" parameterType="int">
-        select * from ssmbuild.books where bookID = #{bookId};
+    <select id="queryBookById" parameterType="int" resultType="books">
+        select * from ssmbuild.books where bookId = #{bookId};
     </select>
 
     <select id="queryAllBook" resultType="books">
         select  * from  ssmbuild.books;
+    </select>
+
+    <select id="queryBookByName" resultType="books">
+        select * from ssmbuild.books where bookName = #{bookName};
     </select>
 </mapper>
